@@ -1,0 +1,14 @@
+
+# Filter out VScode Working Files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# dotenv Environment Variable Files
+.env
+.env.development.local
+.env.test.local
+.env.local
