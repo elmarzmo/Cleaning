@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Define the schema (structure of a service document)
-const serviceSchema = new mangoose.Schema({
+const serviceSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true,
