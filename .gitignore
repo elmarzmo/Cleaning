@@ -12,3 +12,10 @@
 .env.development.local
 .env.test.local
 .env.local
+
+# Node modules
+node_modules/ 
+app_admin/node_modules/ 
+ 
+# NPM debug log files   
+npm-debug.log*  

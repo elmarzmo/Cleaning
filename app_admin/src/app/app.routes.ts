@@ -8,4 +8,3 @@ import { Quote } from './quote/quote';
     { path: 'quote', component: Quote} // Quote page
  ];
 
- 

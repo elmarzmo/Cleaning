@@ -15,3 +15,5 @@ const serviceSchema = new mongoose.Schema({
     phoneNumber: Number,
     
 });
+
+module.exports = mongoose.model('Service', serviceSchema);  

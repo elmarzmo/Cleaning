@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class Quote {
   // backend
-  private apiUrl = 'http://localhost:5000/api/quotes';
+  private apiUrl = 'http://localhost:5000/api/service';
 
-  constructor(private hhtp:HttpClient){}
+  constructor(private http:HttpClient){}
 
   sendQuote(data: any): Observable<any> {
     return this.http.post(this.apiUrl, data);
