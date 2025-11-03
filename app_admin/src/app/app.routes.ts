@@ -7,4 +7,3 @@ import { Quote } from './quote/quote';
     { path : '', component: Home}, //deafault route
     { path: 'quote', component: Quote} // Quote page
  ];
-

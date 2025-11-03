@@ -25,11 +25,13 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.delete('/:name', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        await Service.findOneAndDelete({ name: req.params.name });
-        res.status(204).json({message: 'Service deleted' }); 
-         console.log("error344");
+        const deleted = await Service.findByIdAndDelete(req.params.id);
+        if (!deleted)  return res.status(404).json({ message: 'Service not found' });
+    
+        res.status(200).json({ message: 'Service deleted successfully' });
+
     } catch (err) {
         res.status(500).json({ error: err.message });
         console.log("error33");

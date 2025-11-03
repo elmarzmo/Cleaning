@@ -1,0 +1,30 @@
+.quote-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px, solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.quote-form{
+    flex: 1;
+    padding: 8px 10px;
+}
+.quote-list button {
+    background-color: #ff4d4d;
+    border: none;
+    padding: 12px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
