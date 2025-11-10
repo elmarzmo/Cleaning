@@ -6,8 +6,12 @@
     <form (ngSubmit)="onSubmit()" #quoteForm="ngForm">
        
             <input type="text" name="name" [(ngModel)]="newQuote.name" placeholder="name" required />
-            <input type="text" name="email" [(ngModel)]="newQuote.email" placeholder="email" required />
+            <input type="email" name="email" [(ngModel)]="newQuote.email" placeholder="email" #email="ngModel" required [ngClass] ="{ 'is-invalid': email.invalid && email.touched}"/>
+                <div *ngIf = "email.invalid && email.touched" style="color: red; font-size: 0.9em;" class="error-msg" >
+                   enter a valid email address.
+                 </div>
             <input type="text" name="phone" [(ngModel)]="newQuote.phone" placeholder="phone" required />
+            <input type="text" name="address" [(ngModel)]="newQuote.address" placeholder="address" required/>
             <input type="text" name="zipCode" [(ngModel)]="newQuote.zipCode" placeholder="zip code" required />
             <input type="number" name="room" [(ngModel)]="newQuote.room" placeholder="number of rooms" required />
             <input type="number" name="bathroom" [(ngModel)]="newQuote.bathroom" placeholder="number of bathrooms" required />
@@ -15,7 +19,9 @@
             <button type="button" (click)="calculateRate()">Get Suggested Quote</button>
             <button type="submit" (click)="submitForFinalQuote()" [disabled]="!quoteForm.form.valid">Submit Quote Request</button>
 
+
     </form> 
+    
     <div *ngIf="estimatedRate !== null" class="rate-display">
         <h3>Estimated Rate: ${{ estimatedRate }}</h3>
         <p>{{ infoMessage }}</p>
