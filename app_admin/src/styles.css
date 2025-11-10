@@ -1,7 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* soft blue gradient */
-  min-height: 100vh; /* ensure it fills the full viewport */
-  margin: 0;
-  font-family: Arial, sans-serif;
-}

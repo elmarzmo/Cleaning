@@ -33,7 +33,21 @@ export class Quote {
       console.log('Quote submitted:', response);
     });
   }
+  ngAfterViewInit() {
+    const emojis = ["🧹", "🪣", "🧼","✨", "🧽", "🧴"];
+    const background = document.getElementById('background');
 
+    for( let i = 0; i < 100; i++) { 
+      const span = document.createElement('span');
+      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      span.style.position = 'absolute';
+      span.style.top = Math.random() * 100 + 'vh';
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.fontSize = (Math.random() * 24 + 12) + 'px';
+      span.style.opacity = '0.2';
+      background?.appendChild(span);
+    }
+  } 
 
   calculateRate() {
     if (!this.newQuote.room && !this.newQuote.bathroom) {
