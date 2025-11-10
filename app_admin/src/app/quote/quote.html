@@ -6,17 +6,22 @@
     <form (ngSubmit)="onSubmit()" #quoteForm="ngForm">
        
             <input type="text" name="name" [(ngModel)]="newQuote.name" placeholder="name" required />
-            <input type="email" name="email" [(ngModel)]="newQuote.email" placeholder="email" #email="ngModel" required [ngClass] ="{ 'is-invalid': email.invalid && email.touched}"/>
-                <div *ngIf = "email.invalid && email.touched" style="color: red; font-size: 0.9em;" class="error-msg" >
-                   enter a valid email address.
+            <input type="email" name="email" [(ngModel)]="newQuote.email" placeholder="email" #email="ngModel" required email/>
+                <div *ngIf = "email.invalid &&  email.touched" style="color: red; font-size: 0.9em;">
+                  <small *ngIf="email.errors?.['required']">Email is required.</small>
+                  <small *ngIf="email.errors?.['email']">Enter a valid email address.</small>
                  </div>
             <input type="text" name="phone" [(ngModel)]="newQuote.phone" placeholder="phone" required />
             <input type="text" name="address" [(ngModel)]="newQuote.address" placeholder="address" required/>
-            <input type="text" name="zipCode" [(ngModel)]="newQuote.zipCode" placeholder="zip code" required />
+            <input type="text" name="zipCode" [(ngModel)]="newQuote.zipCode" #zip = "ngModel" placeholder="zip code" required pattern="^\d{5}$"/>
+            <div *ngIf = "zip.invalid && zip.touched" style="color: red; font-size: 0.9em;">
+                    <small *ngIf="zip.errors?.['required']">Zip Code is required.</small>
+                    <small *ngIf="zip.errors?.['pattern']">Enter a valid 5-digit zip code.</small>       
+            </div>
             <input type="number" name="room" [(ngModel)]="newQuote.room" placeholder="number of rooms" required />
             <input type="number" name="bathroom" [(ngModel)]="newQuote.bathroom" placeholder="number of bathrooms" required />
             <textarea name="details" [(ngModel)]="newQuote.details" placeholder="details"></textarea>
-            <button type="button" (click)="calculateRate()">Get Suggested Quote</button>
+            <button type="button" (click)="calculateRate()" [disabled]="!quoteForm.form.valid">Get Suggested Quote</button>
             <button type="submit" (click)="submitForFinalQuote()" [disabled]="!quoteForm.form.valid">Submit Quote Request</button>
 
 
