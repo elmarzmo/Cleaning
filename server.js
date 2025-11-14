@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // root for homepage
 app.get('/', (req, res) => {
-    res.render('home', { title: 'SparkleClean' });
+    res.render('home', { title: 'C&D' });
 });
 
 
