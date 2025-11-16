@@ -11,6 +11,7 @@ dotenv.config();
 // Create an express app
 const app = express();
 
+app.use(express.static('public'));
 // Middleware to prase JSON
 app.use(express.json());
 
@@ -21,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // root for homepage
 app.get('/', (req, res) => {
-    res.render('home', { title: 'C&D' });
+    res.render('home', { title: 'Cendy&D' });
 });
 
 
