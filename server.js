@@ -25,7 +25,21 @@ app.get('/', (req, res) => {
     res.render('home', { title: 'Cendy&D' });
 });
 
+app.get('/quote', (req, res) => {
+    res.render('quote', { title: 'Get a Quote' , extraCSS: '/css/quote.css'});
+});
 
+app.post('/submit-quote', (req, res) => {
+    try {
+    const {name, email, phone, serviceType, areaSize, frequency} = req.body;
+    // Here you can process the quote request, e.g., save to database or send email
+    console.log('Quote request received: ', req.body);
+    res.status(200).json({message: 'Quote request received', data: req.body});
+    } catch (error) {
+        console.error('Error processing quote request: ', error);
+    res.status(500).json({message: 'Error processing quote request'});
+    }
+});
 // Use service routes 
 app.use('/api/service', serviceRoutes);
 
