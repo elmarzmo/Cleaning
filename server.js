@@ -26,8 +26,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/quote', (req, res) => {
-    res.render('quote', { title: 'Get a Quote' , extraCSS: '/css/quote.css'});
+    res.render('quote', { title: 'Cendy&D' , extraCSS: '/css/quote.css'});
 });
+
+app.get('/services', (req, res) => {
+    res.render('services', { title: 'Cendy&D' , extraCSS: '/css/services.css'});
+});
+
+// Endpoint to handle quote form submission 
 
 app.post('/submit-quote', (req, res) => {
     try {

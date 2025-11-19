@@ -1,0 +1,52 @@
+.services-header {
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 60px 20px;
+                text-align: center;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }   
+.services-header h2 {
+                font-size: 22px;
+                margin-bottom: 15px;
+                color: #333;
+            }
+.services-header p {
+                font-size: 1.1rem;
+                color: #666;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+.services-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+                gap: 25px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+.services-card {
+                background: #ffffffdd;
+                border: 1px solid #eee;
+                border-radius: 10px;
+                padding: 25px;
+                box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+                text-align: center;
+            }
+.services-grid h3 {
+                font-size: 20px;
+                margin-bottom: 12px;
+                color: #222;
+            }
+.services-grid p {
+                font-size: 1rem;
+         }
+.cta-section {
+                
+                padding: 14px 26px;
+                border-radius: 8px;
+               font-size: 1.1rem;
+                color: white;
+                text-decoration: none;
+                font-weight: 600;
+                text-align: center;
+            }
