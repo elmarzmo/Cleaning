@@ -23,12 +23,14 @@
             <input type="text" id="zip" name="zip" placeholder="zip">
             <!-- type of service -->
             <label for="service" placeholder="Type of service">Type of Service:</label>
-            <select id="service" name="service" placeholder="Type of service" required>
-                <option value="basic">Basic Home Cleaning</option>
-                <option value="commercial">Commercial Cleaning</option>
-                <option value="deep">Deep Cleaning</option>
-                <option value="move">Move-In/Move-Out Cleaning</option>
-            </select>
+            <select id="service-type" name="service-type" required>
+                <option value="basic" {{#if (eq selectedService "basic")}}selected{{/if}}>Basic Home Cleaning</option>
+                <option value="commercial" {{#if (eq selectedService "commercial")}}selected{{/if}}>Commercial Cleaning</option>
+                <option value="deep" {{#if (eq selectedService "deep")}}selected{{/if}}>Deep Cleaning</option>
+                <option value="move" {{#if (eq selectedService "move")}}selected{{/if}}>Move-In/Move-Out Cleaning</option>
+                <option value="custom-cleaning" {{#if (eq selectedService "custom-cleaning")}}selected{{/if}}>Custom Cleaning</option>
+                <option value="airbnb-cleaning" {{#if (eq selectedService "airbnb-cleaning")}}selected{{/if}}>Airbnb Cleaning</option>
+</select>
 
             <div class="form-group">
                 <label>Anything we should know?</label>
@@ -45,10 +47,10 @@
         <form id="estimate-form">
             <label for="service-type">Service Type:</label>
             <select id="service-type" name="service-type" required>
-                <option value="basic">Basic Home Cleaning</option>
-                <option value="commercial">Commercial Cleaning</option>
-                <option value="deep">Deep Cleaning</option>
-                <option value="move">Move-In/Move-Out Cleaning</option>
+                <option value="basic"{{#if (eq selectedService "basic")}}selected{{/if}}>Basic Home Cleaning</option>
+                <option value="commercial"{{#if (eq selectedService "commercial")}}selected{{/if}}>Commercial Cleaning</option>
+                <option value="deep" {{#if (eq selectedService "deep")}}selected{{/if}}>Deep Cleaning</option>
+                <option value="move"{{#if (eq selectedService "move")}}selected{{/if}}>Move-In/Move-Out Cleaning</option>
             </select>
 
             <label for="area-size">Area Size (in sq ft):</label>

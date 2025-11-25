@@ -5,6 +5,7 @@ const path = require('path');
 const {engine} = require('express-handlebars');
 const serviceRoutes = require('./routes/serviceRoutes');
 
+
 // Load environment variables from .env file
 dotenv.config();
 
@@ -16,7 +17,13 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // handelbars setup
-app.engine('hbs', engine({extname: '.hbs'}));
+app.engine('hbs', engine({
+    extname: '.hbs',
+    defaultLayout: 'main',
+    helpers: {
+        eq: (a, b) => a === b
+    }
+}));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -26,7 +33,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/quote', (req, res) => {
-    res.render('quote', { title: 'Cendy&D' , extraCSS: '/css/quote.css'});
+    const selectedService = req.query['service-type'] || 'basic';
+    res.render('quote', { title: 'Cendy&D' , extraCSS: '/css/quote.css', selectedService });
 });
 
 app.get('/services', (req, res) => {
