@@ -14,6 +14,8 @@ document.getElementById("calcBtn").addEventListener("click", function(e) {e.prev
      if (cleaningType === "deep")  baseRate += 70; 
      if (cleaningType === "move-out") baseRate += 100;
      if (cleaningType === "commercial") baseRate += areaSize * 0.10;
+     if (cleaningType === "custom-cleaning") baseRate += 50;
+     if (cleaningType === "airbnb-cleaning") baseRate += 60;
 
      if (frequency === "one-time") baseRate *= 1.0;
      if (frequency === "weekly") baseRate *= 0.8;

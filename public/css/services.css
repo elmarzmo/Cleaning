@@ -27,12 +27,14 @@
                 padding: 0 20px;
             }
 .service-card {
+                text-decoration: none;
                 background: #ffffffdd;
                 border: 1px solid #eee;
                 border-radius: 10px;
                 padding: 25px;
                 box-shadow: 0 3px 6px rgba(0,0,0,0.05);
                 text-align: center;
+                color: inherit;
             }
 .service-card:hover {
                 box-shadow: 0 6px 12px rgba(0,0,0,0.15);
