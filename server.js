@@ -50,7 +50,7 @@ app.post('/submit-quote', (req, res) => {
     const {name, email, phone, serviceType, frequency} = req.body;
     // Here you can process the quote request, e.g., save to database or send email
     console.log('Quote request received: ', req.body);
-    res.status(200).json({message: 'Quote request received', data: req.body});
+    res.status(200).redirect('/quote-success');   
     } catch (error) {
         console.error('Error processing quote request: ', error);
     res.status(500).json({message: 'Error processing quote request'});
@@ -58,6 +58,10 @@ app.post('/submit-quote', (req, res) => {
 });
 // Use service routes 
 app.use('/api/service', serviceRoutes);
+
+app.get('/quote-success', (req, res) => {
+    res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
+});
 
 //  Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
