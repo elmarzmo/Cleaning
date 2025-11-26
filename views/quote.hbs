@@ -13,24 +13,32 @@
         <h3>Your Contact Information</h3>
         <form id="contact-form" action="/submit-quote" method="POST">
             <!--<label for="name">Full Name:</label>-->
-            <input type="text" id="name" name="name" placeholder="name">
+            <input type="text" id="name" name="name" placeholder="name" required>
 
             <!--<label for="email">Email Address:</label>-->
-            <input type="email" id="email" name="email" placeholder="email">
+            <input type="email" id="email" name="email" placeholder="email" required>
             <!--<label for="phone">Phone Number:</label>-->
-            <input type="tel" id="phone" name="phone" placeholder="phone">  
+            <input type="phone" id="phone" name="phone" placeholder="phone" required>  
             <!--<label for="zip">Zip Code </label>-->
-            <input type="text" id="zip" name="zip" placeholder="zip">
+            <input type="text" id="zip" name="zip" placeholder="zip" required>
             <!-- type of service -->
             <label for="service" placeholder="Type of service">Type of Service:</label>
-            <select id="service-type" name="service-type" required>
+            <select id="service-type" name="service" required>
                 <option value="basic" {{#if (eq selectedService "basic")}}selected{{/if}}>Basic Home Cleaning</option>
                 <option value="commercial" {{#if (eq selectedService "commercial")}}selected{{/if}}>Commercial Cleaning</option>
                 <option value="deep" {{#if (eq selectedService "deep")}}selected{{/if}}>Deep Cleaning</option>
                 <option value="move" {{#if (eq selectedService "move")}}selected{{/if}}>Move-In/Move-Out Cleaning</option>
                 <option value="custom-cleaning" {{#if (eq selectedService "custom-cleaning")}}selected{{/if}}>Custom Cleaning</option>
                 <option value="airbnb-cleaning" {{#if (eq selectedService "airbnb-cleaning")}}selected{{/if}}>Airbnb Cleaning</option>
-</select>
+                
+            </select>
+            <label for="frequency" placeholder="Cleaning Frequency">Cleaning Frequency:</label>
+            <select id="frequency" name="frequency" required>
+                <option value="one-time">One-Time</option>
+                <option value="weekly">Weekly</option>
+                <option value="bi-weekly">Bi-Weekly</option>
+                <option value="monthly">Monthly</option>
+            </select>   
 
             <div class="form-group">
                 <label>Anything we should know?</label>
@@ -44,7 +52,7 @@
 <!-- Instant Estimate Section -->
 <section class="estimate-box">
         <h3>Instant Estimate Calculator</h3>
-        <form id="estimate-form">
+        <form id="estimate-form" action="/submit-quote" method="POST">
             <label for="service-type">Service Type:</label>
             <select id="service-type" name="service-type" required>
                 <option value="basic"{{#if (eq selectedService "basic")}}selected{{/if}}>Basic Home Cleaning</option>

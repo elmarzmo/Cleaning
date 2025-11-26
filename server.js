@@ -16,6 +16,8 @@ app.use(express.static('public'));
 // Middleware to prase JSON
 app.use(express.json());
 
+// 
+app.use(express.urlencoded({ extended: true }));
 // handelbars setup
 app.engine('hbs', engine({
     extname: '.hbs',
@@ -45,7 +47,7 @@ app.get('/services', (req, res) => {
 
 app.post('/submit-quote', (req, res) => {
     try {
-    const {name, email, phone, serviceType, areaSize, frequency} = req.body;
+    const {name, email, phone, serviceType, frequency} = req.body;
     // Here you can process the quote request, e.g., save to database or send email
     console.log('Quote request received: ', req.body);
     res.status(200).json({message: 'Quote request received', data: req.body});
