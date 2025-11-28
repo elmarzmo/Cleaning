@@ -26,7 +26,7 @@ const quoteSchema= new mongoose.Schema({
         type: String,
         required: true
     },
-    note: {
+    notes: {
         type: String
     },
     

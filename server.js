@@ -55,7 +55,7 @@ app.post('/submit-quote', async (req, res) => {
         zip: req.body.zip,
         service: req.body.service,
         frequency: req.body.frequency,
-        note: req.body.note
+        notes: req.body.notes
     });
     await newQuote.save();
    
