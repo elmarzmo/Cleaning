@@ -4,20 +4,8 @@ const Admin = require('../models/admin');
 const jwt = require('jsonwebtoken');
 
 
-// Middleware verify JWT token
-function verifyToken(req, res, next) {
-    const token = req.headers['authorization']?.split(' ')[1];
-    if (!token) return res.status(401).json({ message: 'No token provided' });
 
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.adminId = decoded;
-        next();
-    }
-    catch (error) {
-        return res.status(401).json({ message: 'Invalid token' });
-    }
-}   
+
 
 // Admin login
 router.post('/login', async (req, res) => {
@@ -63,6 +51,10 @@ router.post('/create', async (req, res) => {
 
         res.status(500).json({ message: 'Server error' });
     }
+});
+
+router.get('/protected', verifyToken, (req, res) => {
+    res.json({ message: 'This is a protected route', adminId: req.adminId });
 });
 
 module.exports = router;
