@@ -4,8 +4,9 @@ const dotenv = require('dotenv');
 const path = require('path');
 const {engine} = require('express-handlebars');
 const serviceRoutes = require('./routes/serviceRoutes');
-const QuoteRequest = require('./models/quoteRequest');
+const quoteRequests = require('./routes/quoteRoutes');
 const AdminRoutes = require('./routes/adminRoutes');
+
 
 
 
@@ -45,8 +46,11 @@ app.get('/quote', (req, res) => {
 app.get('/services', (req, res) => {
     res.render('services', { title: 'Cendy&D' , extraCSS: '/css/services.css'});
 });
+// Use quote request routes
 
-// Endpoint to handle quote form submission 
+app.use('/api/quotes', quoteRequests);
+
+/*// Endpoint to handle quote form submission 
 
 app.post('/submit-quote', async (req, res) => {
     try {
@@ -67,7 +71,7 @@ app.post('/submit-quote', async (req, res) => {
         console.error('Error processing quote request: ', error);
     res.status(500).json({message: 'Error processing quote request'});
     }
-});
+});*/
 // Use service routes 
 app.use('/api/service', serviceRoutes);
 
