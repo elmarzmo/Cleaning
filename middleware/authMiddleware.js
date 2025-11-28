@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+
 // Middleware verify JWT token
 function verifyToken(req, res, next) {
     const token = req.headers['authorization']?.split(' ')[1];
@@ -14,6 +15,5 @@ function verifyToken(req, res, next) {
         return res.status(401).json({ message: 'Invalid token' });
     }
 }
-
 
 module.exports = verifyToken;

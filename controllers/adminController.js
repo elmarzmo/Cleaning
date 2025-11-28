@@ -1,0 +1,39 @@
+const admin = require('../models/admin');
+const jwt = require('jsonwebtoken');
+
+exports.createAdmin = async (req, res) => {
+    try {
+        console.log("🔥 CREATE ROUTE HIT");
+        console.log("BODY:", req.body);
+        const { username, password } = req.body;    
+        // ckeck if admin already exists
+        const existingAdmin = await admin.findOne({ username });
+        if (existingAdmin) {
+            return res.status(400).json({ message: 'Admin already exists' });
+        }   
+        const newAdmin = new admin({ username });
+        newAdmin.setPassword(password);
+        await newAdmin.save();
+        res.status(201).json({ message: 'Admin created successfully' });    
+    } catch (error) {
+            console.error("REGISTER ERROR:", error);  // <-- ADD THIS
+
+        res.status(500).json({ message: 'Server error' });
+    }
+};  
+
+
+exports.login = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const adminUser = await admin.findOne({ username });
+        if (!adminUser || !adminUser.comparePassword(password)) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+        const token = adminUser.generateJWT();
+        res.json({ token });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
