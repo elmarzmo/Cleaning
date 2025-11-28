@@ -5,6 +5,8 @@ const path = require('path');
 const {engine} = require('express-handlebars');
 const serviceRoutes = require('./routes/serviceRoutes');
 const QuoteRequest = require('./models/quoteRequest');
+const AdminRoutes = require('./routes/adminRoutes');
+
 
 
 // Load environment variables from .env file
@@ -68,6 +70,10 @@ app.post('/submit-quote', async (req, res) => {
 });
 // Use service routes 
 app.use('/api/service', serviceRoutes);
+
+
+// Use admin routes
+app.use('/api/admin', AdminRoutes);
 
 app.get('/quote-success', (req, res) => {
     res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
