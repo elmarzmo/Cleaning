@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const {engine} = require('express-handlebars');
 const serviceRoutes = require('./routes/serviceRoutes');
+const QuoteRequest = require('./models/quoteRequest');
 
 
 // Load environment variables from .env file
@@ -45,11 +46,20 @@ app.get('/services', (req, res) => {
 
 // Endpoint to handle quote form submission 
 
-app.post('/submit-quote', (req, res) => {
+app.post('/submit-quote', async (req, res) => {
     try {
-    const {name, email, phone, serviceType, frequency} = req.body;
-    // Here you can process the quote request, e.g., save to database or send email
-    console.log('Quote request received: ', req.body);
+    const newQuote = new QuoteRequest({
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        zip: req.body.zip,
+        service: req.body.service,
+        frequency: req.body.frequency,
+        note: req.body.note
+    });
+    await newQuote.save();
+   
+    console.log('Quote request received: ',{name: req.body.name });
     res.status(200).redirect('/quote-success');   
     } catch (error) {
         console.error('Error processing quote request: ', error);
