@@ -25,7 +25,10 @@ exports.submitQuote = async (req, res) => {
             notes: req.body.notes
         });
         await newQuote.save();
-        res.status(200).json({ message: 'Quote request submitted successfully' });
+        res.status(302).redirect('/quote-success');
+        
+        
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server error' });

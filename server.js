@@ -62,6 +62,10 @@ app.get('/quote-success', (req, res) => {
     res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
 });
 
+app.get('/quote-success', (req, res) => {
+    res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
+});
+
 //  Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
 .then (()=> console.log(' Connected to MongoDB'))

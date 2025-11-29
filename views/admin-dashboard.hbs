@@ -1,0 +1,32 @@
+<h2>Admin Dashboard</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Zip Code</th>
+            <th>Service Type</th>
+            <th>Frequency</th>
+            <th>Notes</th>
+            <th>Submitted At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="quote-requests-body">
+        {{#each quoteRequests}}
+        <tr data-id="{{this._id}}">
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.phone}}</td>
+            <td>{{this.zip}}</td>
+            <td>{{this.service}}</td>
+            <td>{{this.frequency}}</td>
+            <td>{{this.notes}}</td>
+            <td>{{this.submittedAt}}</td>
+            <td><button class="delete-btn">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="/js/admin.js"></script>
