@@ -8,9 +8,9 @@ const verifyToken = require('../middleware/authMiddleware');
 
 
 // Admin registration
-router.post('/create', adminController.createAdmin);
+router.post('/admin/create', adminController.createAdmin);
 // Admin login
-router.post('/login', adminController.login);
+router.post('/admin/login', adminController.login);
 
 
 // Protected route example

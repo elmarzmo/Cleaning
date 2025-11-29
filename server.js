@@ -66,6 +66,16 @@ app.get('/quote-success', (req, res) => {
     res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
 });
 
+// 
+app.get('/admin/login', (req, res) => {
+    res.render('admin-login', { title: 'Admin Login', extraCSS: '/css/admin-login.css' });
+});
+
+app.get('/admin/dashboard', (req, res) => {
+    res.render('admin-dashboard', { title: 'Admin Dashboard', extraCSS: '/css/admin-dashboard.css' });
+});
+
+
 //  Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
 .then (()=> console.log(' Connected to MongoDB'))
