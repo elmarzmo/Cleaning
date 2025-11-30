@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
 
 
 // 
-exports.dashboardData = async (req, res) => {
+exports.getDashboardData = async (req, res) => {
     try {
         const quoteRequest = await QuoteRequest.find().sort({ createdAt: -1 });
         res.status(200).render('admin-dashboard', { 

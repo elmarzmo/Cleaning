@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-document.getElementById("calcBtn").addEventListener("click", function(e) {e.preventDefault();
+ const calcBtn = document.getElementById("calcBtn");
+ if(calcBtn) {
+    calcBtn.addEventListener("click", function(e) {e.preventDefault();
+ 
 
     // Get input values
     const areaSize = parseFloat(document.getElementById("area-size").value); // in square feet
@@ -24,6 +27,8 @@ document.getElementById("calcBtn").addEventListener("click", function(e) {e.prev
 
      document.getElementById("estimate-result").innerHTML = `<p>Your estimated cleaning cost is: <strong>$${baseRate.toFixed(2)}</strong></p>`;
 });
+ 
+
 
 // Decorative emojis
 
@@ -42,4 +47,6 @@ document.getElementById("calcBtn").addEventListener("click", function(e) {e.prev
         span.style.zIndex = 0;
         container.appendChild(span);
     }
+ }
 });
+
