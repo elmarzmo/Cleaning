@@ -13,6 +13,7 @@
             <th>Actions</th>
         </tr>
     </thead>
+
     <tbody id="quote-requests-body">
         {{#each quoteRequests}}
         <tr data-id="{{this._id}}">
@@ -23,10 +24,18 @@
             <td>{{this.service}}</td>
             <td>{{this.frequency}}</td>
             <td>{{this.notes}}</td>
-            <td>{{this.submittedAt}}</td>
-            <td><button class="delete-btn">Delete</button></td>
+            <td>{{this.createdAt}}</td>
+
+            
+            <td>
+                <button class="delete-btn" data-id="{{this._id}}">Delete</button>
+                <button class="star" data-id="{{this._id}}">
+                    {{#if this.starred}}⭐{{else}}☆{{/if}}
+                </button>
+            </td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+
 <script src="/js/admin.js"></script>

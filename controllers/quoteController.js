@@ -60,3 +60,17 @@ exports.deleteQuoteById = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+// Toggle star status of a quote request by ID
+exports.toggleStarQuoteById = async (req, res) => {
+    try {
+        const quote = await QuoteRequest.findById(req.params.id);   
+        if (!quote) return res.status(404).json({ message: 'Quote request not found' });
+        quote.starred = !quote.starred;
+        await quote.save();
+        res.status(200).json({ message: 'Quote request star status toggled', starred: quote.starred });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};

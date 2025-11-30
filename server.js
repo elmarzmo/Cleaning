@@ -6,6 +6,7 @@ const {engine} = require('express-handlebars');
 const serviceRoutes = require('./routes/serviceRoutes');
 const quoteRequests = require('./routes/quoteRoutes');
 const AdminRoutes = require('./routes/adminRoutes');
+const QuoteRequest = require('./models/quoteRequest');
 
 
 
@@ -58,6 +59,11 @@ app.use('/api/service', serviceRoutes);
 // Use admin routes
 app.use('/api/admin', AdminRoutes);
 
+
+
+
+// Quote success page
+
 app.get('/quote-success', (req, res) => {
     res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
 });
@@ -71,10 +77,10 @@ app.get('/admin/login', (req, res) => {
     res.render('admin-login', { title: 'Admin Login', extraCSS: '/css/admin-login.css' });
 });
 
-app.get('/admin/dashboard', (req, res) => {
-    res.render('admin-dashboard', { title: 'Admin Dashboard', extraCSS: '/css/admin-dashboard.css' });
+app.get('/admin/dashboard', async (req, res) => {
+    const quotes = await QuoteRequest.find().sort({ createdAt: -1 });
+    res.render('admin-dashboard', { title: 'Admin Dashboard', extraCSS: '/css/admin-dashboard.css', quotes });
 });
-
 
 //  Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)

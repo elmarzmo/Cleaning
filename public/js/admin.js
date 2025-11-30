@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            const response = await fetch('/admin/login', {
+            const response = await fetch('/api/admin/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // load dashboard quotes
+
 const quoteTable = document.getElementById('quote-requests-body');
 if(quoteTable) {
     loadQuotes();
@@ -59,20 +60,14 @@ async function loadQuotes() {
             <td>${new Date(quote.createdAt).toLocaleString()}</td>
 
             <td>
-                <button class="view-quote" data-id="${quote._id}">View</button>
+                <button class="star" data-id="${quote._id}">  ${quote.starred ? '⭐' : '☆'}</button>
                 <button class="delete-quote" data-id="${quote._id}">Delete</button>
             </td>
         `;
         table.appendChild(row);
     });
 
-    // Add event listeners for view and delete buttons  
-    document.querySelectorAll('.view-quote').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const id = e.target.getAttribute('data-id');
-            window.location.href = `/admin/quote/${id}`;
-        }); 
-    });
+    // Add event listeners for delete buttons  
 
     document.querySelectorAll('.delete-quote').forEach(button => {  
         button.addEventListener('click', async (e) => {
@@ -89,4 +84,20 @@ async function loadQuotes() {
             }
         });
     });
-}
+    // add start off amd on click
+    document.querySelectorAll('.star').forEach(button => {  
+        button.addEventListener('click', async (e) => {
+            const id = e.target.getAttribute('data-id');
+            const token = localStorage.getItem('adminToken');   
+            const response = await fetch(`/api/quotes/${id}/star`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ${token}`, 
+                    'Content-Type': 'application/json'
+                }   
+            });
+            const result = await response.json();
+            e.target.innerText = result.starred ? '⭐' : '☆';
+        });
+    });
+}   

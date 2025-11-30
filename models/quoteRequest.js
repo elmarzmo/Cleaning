@@ -29,6 +29,10 @@ const quoteSchema= new mongoose.Schema({
     notes: {
         type: String
     },
+    starred: {
+        type: Boolean,
+        default: false
+    },
     
 },{ timestamps: true});
 
