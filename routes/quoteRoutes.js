@@ -5,6 +5,8 @@ const quoteController = require('../controllers/quoteController');
 const { verify } = require('jsonwebtoken');
 const verifyToken = require('../middleware/authMiddleware');
 
+router.use(verifyToken);
+
 // Get all quote requests
 router.get('/', quoteController.getAllQuotes);
 
@@ -16,7 +18,7 @@ router.get('/:id', quoteController.getQuoteById);
 router.post('/submit-quote', quoteController.submitQuote);
 router.delete('/:id', quoteController.deleteQuoteById);
     
-router.patch('/:id/star', verifyToken, quoteController.toggleStarQuoteById);
+router.patch('/:id/star',quoteController.toggleStarQuoteById);
 
 
 module.exports = router;

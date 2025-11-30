@@ -1,5 +1,8 @@
 const admin = require('../models/admin');
 const jwt = require('jsonwebtoken');
+const QuoteRequest = require('../models/quoteRequest');
+
+// Admin registration
 
 exports.createAdmin = async (req, res) => {
     try {
@@ -37,3 +40,17 @@ exports.login = async (req, res) => {
     }
 };
 
+
+// 
+exports.dashboardData = async (req, res) => {
+    try {
+        const quoteRequest = await QuoteRequest.find().sort({ createdAt: -1 });
+        res.status(200).render('admin-dashboard', { 
+            title: 'Admin Dashboard', 
+            extraCSS: '/css/admin-dashboard.css', 
+            quoteRequest
+         });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }   
+};

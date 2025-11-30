@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            const response = await fetch('/api/admin/login', {
+            const response = await fetch('/api/admin-hna46553123/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if(data.token) {
                 localStorage.setItem('adminToken', data.token);
-                window.location.href = '/admin/dashboard';
+                window.location.href = '/admin-hna46553123/dashboard';
             } else {
                 document.getElementById('error-message').innerText = 'Login failed';
             }

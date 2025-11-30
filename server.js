@@ -68,16 +68,12 @@ app.get('/quote-success', (req, res) => {
     res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
 });
 
-app.get('/quote-success', (req, res) => {
-    res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
-});
-
 // 
-app.get('/admin/login', (req, res) => {
+app.get('/admin-hna46553123/login', (req, res) => {
     res.render('admin-login', { title: 'Admin Login', extraCSS: '/css/admin-login.css' });
 });
 
-app.get('/admin/dashboard', async (req, res) => {
+app.get('/admin-hna46553123/dashboard', async (req, res) => {
     const quotes = await QuoteRequest.find().sort({ createdAt: -1 });
     res.render('admin-dashboard', { title: 'Admin Dashboard', extraCSS: '/css/admin-dashboard.css', quotes });
 });
