@@ -70,7 +70,7 @@ app.get('/quote-success', (req, res) => {
 
 // 
 app.get('/admin-hna46553123/login', (req, res) => {
-    res.render('admin-login', { title: 'Admin Login', extraCSS: '/css/admin-login.css' });
+    res.render('admin-login', { title: 'Admin Login', extraCSS: '/css/admin.css' });
 });
 
 app.get('/admin-hna46553123/dashboard', async (req, res) => {
