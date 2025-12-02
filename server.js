@@ -57,7 +57,7 @@ app.use('/api/service', serviceRoutes);
 
 
 // Use admin routes
-app.use('/api/admin', AdminRoutes);
+app.use('/api/admin-hna46553123', AdminRoutes);
 
 
 
