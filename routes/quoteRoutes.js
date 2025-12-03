@@ -8,17 +8,16 @@ const verifyToken = require('../middleware/authMiddleware');
 
 
 // Get all quote requests
-router.get('/', quoteController.getAllQuotes);
+router.get('/',verifyToken, quoteController.getAllQuotes);
 
 // Get a single quote request by ID
-router.get('/:id', quoteController.getQuoteById);
+router.get('/:id', verifyToken, quoteController.getQuoteById);
 
 
 // Endpoint to handle quote form submission
 router.post('/submit-quote', quoteController.submitQuote);
-router.delete('/:id', quoteController.deleteQuoteById);
-    
-router.patch('/:id/star',quoteController.toggleStarQuoteById);
+router.delete('/:id', verifyToken, quoteController.deleteQuoteById);
+router.patch('/:id/star',verifyToken, quoteController.toggleStarQuoteById);
 
 
 module.exports = router;
