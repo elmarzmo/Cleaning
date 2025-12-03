@@ -59,6 +59,10 @@ app.use('/api/service', serviceRoutes);
 // Use admin routes
 app.use('/api/admin-hna46553123', AdminRoutes);
 
+// use submission routes
+app.use('/api/submit-quote', quoteRequests);
+
+
 
 
 

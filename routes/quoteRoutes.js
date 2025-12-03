@@ -5,7 +5,7 @@ const quoteController = require('../controllers/quoteController');
 const { verify } = require('jsonwebtoken');
 const verifyToken = require('../middleware/authMiddleware');
 
-router.use(verifyToken);
+
 
 // Get all quote requests
 router.get('/', quoteController.getAllQuotes);
