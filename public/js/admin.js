@@ -1,3 +1,11 @@
+// Redirect to login if no token
+if (window.location.pathname.includes('/admin-hna46553123/dashboard')) {
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+        window.location.href = '/admin-hna46553123/login';
+    }
+}
+
 // login submission
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('admin-login-form');
@@ -18,16 +26,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const data = await response.json();
+            console.log(data);
 
             if(data.token) {
                 localStorage.setItem('adminToken', data.token);
-                window.location.href = '/admin-hna46553123/dashboard';
+                window.location.href = `/api/admin-hna46553123/dashboard`;
             } else {
                 document.getElementById('error-message').innerText = 'Login failed';
             }
         });
     }
 });
+
+// logout button
+const logoutButton = document.getElementById('logout-button');
+if(logoutButton) {
+    logoutButton.addEventListener('click', () => {
+        localStorage.removeItem('adminToken');
+        window.location.href = '/admin-hna46553123/login';
+    });
+}   
+
 
 // load dashboard quotes
 

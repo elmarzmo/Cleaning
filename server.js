@@ -76,9 +76,9 @@ app.get('/admin-hna46553123/login', (req, res) => {
     res.render('admin-login', { title: 'Admin Login', extraCSS: '/css/admin.css' });
 });
 
-app.get('/admin-hna46553123/dashboard', verifyToken, async (req, res) => {
-    const quotes = await QuoteRequest.find().sort({ createdAt: -1 });
-    res.render('admin-dashboard', { title: 'Admin Dashboard', extraCSS: '/css/admin-dashboard.css', quotes });
+app.get('/admin-hna46553123/dashboard', (req, res) => {
+    //const quotes = await QuoteRequest.find().sort({ createdAt: -1 });
+    res.render('admin-dashboard', { title: 'Admin Dashboard', extraCSS: '/css/admin-dashboard.css' });
 });
 
 //  Connect to MongoDB

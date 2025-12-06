@@ -29,13 +29,24 @@ exports.createAdmin = async (req, res) => {
 exports.login = async (req, res) => {
     try {
         const { username, password } = req.body;
+
         const adminUser = await admin.findOne({ username });
         if (!adminUser || !adminUser.comparePassword(password)) {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
         const token = adminUser.generateJWT();
-        res.json({ token });
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            maxAge: 24 * 60 * 60 * 1000
+        });
+
+        res.status(200).json({
+             token
+            });
     } catch (error) {
+        console.error("LOGIN ERROR:", error);  
         res.status(500).json({ message: 'Server error' });
     }
 };

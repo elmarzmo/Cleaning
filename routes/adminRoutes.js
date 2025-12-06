@@ -18,6 +18,6 @@ router.get('/protected', verifyToken, (req, res) => {
     res.json({ message: 'This is a protected route', adminId: req.adminId });
 });
 
-router.get('/dashboard', verifyToken, adminController.getDashboardData);
+router.get('/dashboard', adminController.getDashboardData);
 
 module.exports = router;
