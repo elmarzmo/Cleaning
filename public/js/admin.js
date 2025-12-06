@@ -83,7 +83,7 @@ async function loadQuotes() {
         button.addEventListener('click', async (e) => {
             const id = e.target.getAttribute('data-id');
             const token = localStorage.getItem('adminToken');   
-            const response = await fetch(`/quotes/${id}`, {
+            const response = await fetch(`/api/quotes/${id}`, {
                 method: 'DELETE',
                 headers: {  
                     'Authorization': `Bearer ${token}`
