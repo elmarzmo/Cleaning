@@ -8,6 +8,8 @@ const quoteRequests = require('./routes/quoteRoutes');
 const AdminRoutes = require('./routes/adminRoutes');
 const QuoteRequest = require('./models/quoteRequest');
 const verifyToken = require('./middleware/authMiddleware');
+const cookieParser = require('cookie-parser');
+
 
 
 
@@ -17,6 +19,11 @@ dotenv.config();
 
 // Create an express app
 const app = express();
+
+
+// use cookie parser
+app.use(cookieParser());
+
 
 app.use(express.static('public'));
 // Middleware to prase JSON
@@ -58,7 +65,7 @@ app.use('/api/service', serviceRoutes);
 
 
 // Use admin routes
-app.use('/api/admin-hna46553123', AdminRoutes);
+app.use('/admin-hna46553123', AdminRoutes);
 
 
 
@@ -72,15 +79,16 @@ app.get('/quote-success', (req, res) => {
 });
 
 // 
+/*
 app.get('/admin-hna46553123/login', (req, res) => {
-    res.render('admin-login', { title: 'Admin Login', extraCSS: '/css/admin.css' });
+    res.render('admin-login', { title: 'Admin Login', extraCSS: '/css/admin.css', layout: 'admin' });
 });
-
+/*
 app.get('/admin-hna46553123/dashboard', (req, res) => {
     //const quotes = await QuoteRequest.find().sort({ createdAt: -1 });
     res.render('admin-dashboard', { title: 'Admin Dashboard', extraCSS: '/css/admin-dashboard.css' });
 });
-
+*/
 //  Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
 .then (()=> console.log(' Connected to MongoDB'))

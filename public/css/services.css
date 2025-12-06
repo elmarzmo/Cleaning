@@ -1,6 +1,6 @@
 .services-header {
-                background: white;
-                border: 1px solid #ddd;
+                background: #d1d1d1;
+                border: 1px  #ddd;
                 border-radius: 8px;
                 padding: 60px 20px;
                 text-align: center;
@@ -13,7 +13,7 @@
             }
 .services-header p {
                 font-size: 1.1rem;
-                color: #666;
+                color: #333;
                 max-width: 600px;
                 margin: 0 auto;
             }

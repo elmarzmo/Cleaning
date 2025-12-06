@@ -42,9 +42,8 @@ exports.login = async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000
         });
 
-        res.status(200).json({
-             token
-            });
+          res.status(200).json({ message: 'Login successful' });
+          
     } catch (error) {
         console.error("LOGIN ERROR:", error);  
         res.status(500).json({ message: 'Server error' });
@@ -59,6 +58,7 @@ exports.getDashboardData = async (req, res) => {
         res.status(200).render('admin-dashboard', { 
             title: 'Admin Dashboard', 
             extraCSS: '/css/admin-dashboard.css', 
+            layout: 'admin',
             quoteRequest
          });
     } catch (error) {
