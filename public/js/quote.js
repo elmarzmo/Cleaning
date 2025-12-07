@@ -1,3 +1,5 @@
+/*
+
 document.addEventListener("DOMContentLoaded", () => {
  const calcBtn = document.getElementById("calcBtn");
  if(calcBtn) {
@@ -28,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
      document.getElementById("estimate-result").innerHTML = `<p>Your estimated cleaning cost is: <strong>$${baseRate.toFixed(2)}</strong></p>`;
 });
  
-
+*/
 
 // Decorative emojis
 
@@ -47,6 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
         span.style.zIndex = 0;
         container.appendChild(span);
     }
+    /*
  }
 });
 
+*/
