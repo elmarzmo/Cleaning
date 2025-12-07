@@ -1,8 +1,41 @@
 <button id="logout-button">Logout</button>
 <h2 class="admin-dashboard-title">Admin Dashboard</h2>
 
+<h3 class="section-title">Messages</h3>
+<div class=" table-wrapper">
+<table class="message-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Received At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
 
-<table>
+    <tbody id="messages-body">
+        {{#each messages}}
+        <tr data-id="{{this._id}}">
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.message}}</td>
+            <td>{{this.createdAt}}</td>
+            <td>
+                <button class="delete-message" data-id="{{this._id}}">Delete</button>
+                <button class="message-star" data-id="{{this._id}}">
+                    {{#if this.starred}}⭐{{else}}☆{{/if}}
+                </button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
+
+<h3 class="section-title">Quote Requests</h3>
+<div class="table-wrapper">
+<table class="quote-requests-table">
     <thead>
         <tr>
             <th>Name</th>
@@ -40,5 +73,5 @@
         {{/each}}
     </tbody>
 </table>
-
+</div>
 <script src="/js/admin.js"></script>

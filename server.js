@@ -64,6 +64,7 @@ app.use('/api/quotes', quoteRequests);
 
 app.use('/', messageRoutes);
 
+app.use('/api/messages', messageRoutes);
 
 // Use service routes 
 app.use('/api/service', serviceRoutes);

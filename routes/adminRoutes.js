@@ -40,6 +40,8 @@ router.get('/logout', (req, res) => {
 
 router.get('/dashboard', verifyToken, adminController.getDashboardData);
 
+router.get('/messages', verifyToken, adminController.getMessages);
+
 
 
 module.exports = router;

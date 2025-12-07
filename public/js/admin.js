@@ -44,8 +44,76 @@ if(logoutButton){
 const quoteTable = document.getElementById('quote-requests-body');
 if(quoteTable) {
     loadQuotes();
+    loadMessages();
 }   
 
+ async function loadMessages() {
+    const token = localStorage.getItem('adminToken');
+    const response = await fetch('/api/messages', {
+        headers: {
+            'Authorization': `Bearer ${token}` 
+        }
+    });
+
+    if (!response.ok) {
+        console.error('Failed to fetch messages');
+        return;
+    }
+
+    const messages = await response.json();
+    const messageTable = document.getElementById('messages-body');
+    messageTable.innerHTML = '';    
+    messages.forEach(message => {
+        const row = document.createElement('tr');
+        row.innerHTML = `   
+            <td>${message.name}</td>
+            <td>${message.email}</td>
+            <td>${message.message}</td>
+            <td>${new Date(message.createdAt).toLocaleString()}</td>
+
+            
+            <td>
+                <button class="message-star" data-id="${message._id}">  ${message.starred ? '⭐' : '☆'}</button>
+                <button class="delete-message" data-id="${message._id}">Delete</button>
+            </td>
+        `;
+        messageTable.appendChild(row);
+    });
+
+    // Add event listeners for delete buttons
+    document.querySelectorAll('.delete-message').forEach(button => {
+        button.addEventListener('click', async (e) => {
+            const id = e.target.getAttribute('data-id');
+            const token = localStorage.getItem('adminToken');
+            const response = await fetch(`/api/messages/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if(response.ok) {
+                loadMessages();
+                loadQuotes();
+            }
+        });
+    }); 
+    // add start off amd on click
+    document.querySelectorAll('.message-star').forEach(button => {  
+        button.addEventListener('click', async (e) => { 
+            const id = e.target.getAttribute('data-id');
+            const token = localStorage.getItem('adminToken');   
+            const response = await fetch(`/api/messages/${id}/message-star`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ${token}`, 
+                    'Content-Type': 'application/json'
+                }   
+            });
+            const result = await response.json();
+            e.target.innerText = result.starred ? '⭐' : '☆';
+        });
+    });
+}
 
 async function loadQuotes() {
     const token = localStorage.getItem('adminToken');
@@ -77,6 +145,10 @@ async function loadQuotes() {
         table.appendChild(row);
     });
 
+
+
+    
+
     // Add event listeners for delete buttons  
 
     document.querySelectorAll('.delete-quote').forEach(button => {  
@@ -91,6 +163,7 @@ async function loadQuotes() {
             });
             if(response.ok) {
                 loadQuotes();
+                loadMessages();
             }
         });
     });

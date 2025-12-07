@@ -1,6 +1,7 @@
 const admin = require('../models/admin');
 const jwt = require('jsonwebtoken');
 const QuoteRequest = require('../models/quoteRequest');
+const Messages = require('../models/messages');
 
 // Admin registration
 
@@ -51,7 +52,7 @@ exports.login = async (req, res) => {
 };
 
 
-// 
+// Get dashboard data
 exports.getDashboardData = async (req, res) => {
     try {
         const quoteRequest = await QuoteRequest.find().sort({ createdAt: -1 });
@@ -64,4 +65,19 @@ exports.getDashboardData = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }   
+};
+
+// get message data
+exports.getMessages = async (req, res) => {
+    try {
+        const messages = await Messages.find().sort({ createdAt: -1 });
+
+        // Render the admin-messages view with the retrieved messages
+        res.status(200).render('admin-messages', { 
+            messages
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
 };

@@ -13,7 +13,12 @@ const messages = new mongoose.Schema({
     message: {
         type: String,
         require: true
-    }
+    },
+     starred: {
+        type: Boolean,
+        default: false
+    },
+    
 }, { timestamps: true });
 
     
