@@ -7,6 +7,7 @@ const serviceRoutes = require('./routes/serviceRoutes');
 const quoteRequests = require('./routes/quoteRoutes');
 const AdminRoutes = require('./routes/adminRoutes');
 const QuoteRequest = require('./models/quoteRequest');
+const messageRoutes = require('./routes/messageRoutes');
 const verifyToken = require('./middleware/authMiddleware');
 const cookieParser = require('cookie-parser');
 
@@ -58,6 +59,10 @@ app.get('/services', (req, res) => {
 // Use quote request routes
 
 app.use('/api/quotes', quoteRequests);
+
+// Use message routes
+
+app.use('/', messageRoutes);
 
 
 // Use service routes 
