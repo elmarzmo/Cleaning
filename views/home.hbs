@@ -45,10 +45,10 @@
 
         <div class="contact-info">
             <h3>Get in Touch</h3>
-            <p>📞 (123) 456-7890</p>
-            <p>📧 info@cleaningservice.com</p>
-            <p>📍Memphis, TN 38103</p>
-            <p>🕒 Mon-Fri 8am - 6pm</p>
+            <p>📞 {{contact.phone}}</p>
+            <p>📧 {{contact.email}}</p>
+            <p>📍{{contact.address}}</p>
+            <p>🕒 {{contact.workingHours}}</p>
     </div>
     <!-- Contact Form -->
     <form class="contact-form" action="/submit-message" method="post">

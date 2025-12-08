@@ -1,0 +1,21 @@
+<h1>Update Contact Information</h1>
+<form action="/admin-hna46553123/update-contacts" method="POST" class="contact-form">
+    <label>Phone</label>
+    <input type="text" name="phone" value="{{contact.phone}}" required>
+
+    <label>Email</label>
+    <input type="email" name="email" value="{{contact.email}}" required>
+
+    <label>Address</label>
+    <input type="text" name="address" value="{{contact.address}}" required>
+
+    <label>Working Hours</label>
+    <input type="text" name="workingHours" value="{{contact.workingHours}}" required>
+
+    <button type="submit" class="savebtn">Save Changes</button>
+</form>
+{{#if success}}
+<p class="success-message">Contact information updated successfully!</p>
+<button onclick="window.location.href='/admin-hna46553123/dashboard'">Go back to admin contacts</button>
+{{/if}}
+

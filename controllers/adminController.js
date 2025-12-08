@@ -2,7 +2,7 @@ const admin = require('../models/admin');
 const jwt = require('jsonwebtoken');
 const QuoteRequest = require('../models/quoteRequest');
 const Messages = require('../models/messages');
-
+const Contact = require('../models/contact');
 // Admin registration
 
 exports.createAdmin = async (req, res) => {
@@ -81,3 +81,39 @@ exports.getMessages = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+// Get contact form submissions
+exports.getContacts = async (req, res) => {
+    try {
+        const contactData = await Contact.findOne().lean();
+        const success = req.query.success === '1';
+        res.render('admin-contacts', { 
+            title: 'Update Contact Information', 
+            extraCSS: '/css/admin-contacts.css',
+            layout: 'admin',
+            contact: contactData,
+            success
+         });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+// Update contact form submissions
+exports.updateContacts = async (req, res) => {
+    try {
+        const { phone, email, address, workingHours } = req.body;
+        
+        const updatedContact = await Contact.findOneAndUpdate(
+            {},
+            { phone, email, address, workingHours },
+            { new: true, upsert: true }
+        );
+        res.redirect('/admin-hna46553123/update-contacts?success=1');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+

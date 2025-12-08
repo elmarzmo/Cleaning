@@ -38,10 +38,18 @@ router.get('/logout', (req, res) => {
     res.redirect('/admin-hna46553123/login');
 });
 
+
 router.get('/dashboard', verifyToken, adminController.getDashboardData);
 
 router.get('/messages', verifyToken, adminController.getMessages);
 
+router.get('/update-contacts', verifyToken, adminController.getContacts);
+
+router.post('/update-contacts', verifyToken, adminController.updateContacts);
+
+router.get('/test', (req, res) => {
+    res.send('Router is working');
+});
 
 
 module.exports = router;

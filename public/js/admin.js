@@ -184,3 +184,12 @@ async function loadQuotes() {
         });
     });
 }   
+
+// Update information button
+
+const updateInfoButton = document.getElementById('update-information');
+if(updateInfoButton){
+    updateInfoButton.addEventListener('click', () => {
+        window.location.href = '/admin-hna46553123/update-contacts';
+    });
+}

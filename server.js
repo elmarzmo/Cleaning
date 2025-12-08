@@ -8,8 +8,10 @@ const quoteRequests = require('./routes/quoteRoutes');
 const AdminRoutes = require('./routes/adminRoutes');
 const QuoteRequest = require('./models/quoteRequest');
 const messageRoutes = require('./routes/messageRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 const verifyToken = require('./middleware/authMiddleware');
 const cookieParser = require('cookie-parser');
+const Contact = require('./models/contact');
 
 
 
@@ -30,6 +32,21 @@ app.use(express.static('public'));
 // Middleware to prase JSON
 app.use(express.json());
 
+
+app.use(async (req, res, next) => {
+    try {
+        const contactData = await Contact.findOne().lean();
+        res.locals.contact = contactData;
+        next();
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+});
+
+
+
+
 // 
 app.use(express.urlencoded({ extended: true }));
 // handelbars setup
@@ -45,20 +62,24 @@ app.set('views', path.join(__dirname, 'views'));
 
 // root for homepage
 app.get('/', (req, res) => {
-    res.render('home', { title: 'Cendy&D' });
+    res.render('home', { title: 'C&D Cleaning services' });
 });
 
 app.get('/quote', (req, res) => {
     const selectedService = req.query['service-type'] || 'basic';
-    res.render('quote', { title: 'Cendy&D' , extraCSS: '/css/quote.css', selectedService });
+    res.render('quote', { title: 'C&D Cleaning services' , extraCSS: '/css/quote.css', selectedService });
 });
 
 app.get('/services', (req, res) => {
-    res.render('services', { title: 'Cendy&D' , extraCSS: '/css/services.css'});
+    res.render('services', { title: 'C&D Cleaning services' , extraCSS: '/css/services.css'});
 });
 // Use quote request routes
 
 app.use('/api/quotes', quoteRequests);
+
+
+// Use contact routes
+app.use('/api/contacts', contactRoutes);
 
 // Use message routes
 
@@ -73,9 +94,13 @@ app.use('/api/service', serviceRoutes);
 // Use admin routes
 app.use('/admin-hna46553123', AdminRoutes);
 
+// 
 
 
-
+app.get('/debug-contact', async (req, res) => {
+    const data = await Contact.findOne();
+    res.json(data);
+});
 
 
 // Quote success page
