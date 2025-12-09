@@ -1,6 +1,6 @@
-.sucess-message {
-    color: green;
-    font-weight: bold;
-    margin-top: 10px;
-    center-align: center;
+#headerh2{
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(161, 93, 93);
+
 }
