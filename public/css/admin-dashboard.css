@@ -85,6 +85,20 @@ tbody tr:hover {
 #logout-button:hover {
     background-color: #3a78c8;
 }
+#update-information{
+    display: block;
+    margin: 20px auto 40px auto;
+    padding: 12px 20px;
+    background: #28a745;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.25s;
+
+}
 .message-star {
      background: none;
     border: none;
