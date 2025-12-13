@@ -3,6 +3,8 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 
 const adminController = require('../controllers/admin/adminController');
+const authController = require('../controllers/admin/authController');
+const contactController = require('../controllers/contactController');
 const verifyToken = require('../middleware/authMiddleware');
 
 
@@ -23,9 +25,9 @@ router.get('/login', (req, res) => {
 });
 
 // Admin registration
-router.post('/create', adminController.createAdmin);
+router.post('/create', authController.createAdmin);
 // Admin login
-router.post('/login', adminController.login);
+router.post('/login', authController.login);
 
 
 // Protected route example
@@ -43,9 +45,9 @@ router.get('/dashboard', verifyToken, adminController.getDashboardData);
 
 router.get('/messages', verifyToken, adminController.getMessages);
 
-router.get('/update-contacts', verifyToken, adminController.getContacts);
+router.get('/update-contacts', verifyToken, contactController.getAdminContacts);
 
-router.post('/update-contacts', verifyToken, adminController.updateContacts);
+router.post('/update-contacts', verifyToken, contactController.updateAdminContacts);
 
 router.get('/test', (req, res) => {
     res.send('Router is working');
