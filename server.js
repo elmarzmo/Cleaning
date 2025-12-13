@@ -1,16 +1,24 @@
+// server.js
+const dotenv = require('dotenv');
+
+
+// Import required modules
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const {engine} = require('express-handlebars');
+
+// Import route handlers
+
 const serviceRoutes = require('./routes/serviceRoutes');
 const quoteRequests = require('./routes/quoteRoutes');
 const AdminRoutes = require('./routes/adminRoutes');
-const QuoteRequest = require('./models/quoteRequest');
+
 const messageRoutes = require('./routes/messageRoutes');
 const contactRoutes = require('./routes/contactRoutes');
-const verifyToken = require('./middleware/authMiddleware');
-const cookieParser = require('cookie-parser');
+
+// Import Contact model need to be deleted later
 const Contact = require('./models/contact');
 
 

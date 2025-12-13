@@ -1,8 +1,8 @@
-const admin = require('../models/admin');
+const admin = require('../../models/admin');
 const jwt = require('jsonwebtoken');
-const QuoteRequest = require('../models/quoteRequest');
-const Messages = require('../models/messages');
-const Contact = require('../models/contact');
+const QuoteRequest = require('../../models/quoteRequest');
+const Messages = require('../../models/messages');
+const Contact = require('../../models/contact');
 // Admin registration
 
 exports.createAdmin = async (req, res) => {
