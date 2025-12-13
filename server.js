@@ -63,12 +63,12 @@ app.use(loadContact);
 app.get('/', (req, res) => {
     res.render('home', { title: 'C&D Cleaning services' });
 });
-
+// root for quote page
 app.get('/quote', (req, res) => {
     const selectedService = req.query['service-type'] || 'basic';
     res.render('quote', { title: 'C&D Cleaning services' , extraCSS: '/css/quote.css', selectedService });
 });
-
+// services page
 app.get('/services', (req, res) => {
     res.render('services', { title: 'C&D Cleaning services' , extraCSS: '/css/services.css'});
 });
@@ -105,21 +105,7 @@ app.get('/debug-contact', async (req, res) => {
     res.json(data);
 });
 
-/*
 
-app.use('/', messageRoutes); */
-
-// 
-/*
-app.get('/admin-hna46553123/login', (req, res) => {
-    res.render('admin-login', { title: 'Admin Login', extraCSS: '/css/admin.css', layout: 'admin' });
-});
-/*
-app.get('/admin-hna46553123/dashboard', (req, res) => {
-    //const quotes = await QuoteRequest.find().sort({ createdAt: -1 });
-    res.render('admin-dashboard', { title: 'Admin Dashboard', extraCSS: '/css/admin-dashboard.css' });
-});
-*/
 //  Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
 .then (()=> console.log(' Connected to MongoDB'))
