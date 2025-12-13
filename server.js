@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const {engine} = require('express-handlebars');
+const {loadContact} = require('./controllers/contactController');
 
 // Import route handlers
 
@@ -18,45 +19,30 @@ const AdminRoutes = require('./routes/adminRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 
+
 // Import Contact model need to be deleted later
 const Contact = require('./models/contact');
-
-
-
-
-
-// Load environment variables from .env file
-dotenv.config();
 
 // Create an express app
 const app = express();
 
 
+// Load environment variables from .env file
+dotenv.config();
+
+
+// global Middleware
+
+
 // use cookie parser
 app.use(cookieParser());
-
-
+// use express 
 app.use(express.static('public'));
 // Middleware to prase JSON
 app.use(express.json());
-
-
-app.use(async (req, res, next) => {
-    try {
-        const contactData = await Contact.findOne().lean();
-        res.locals.contact = contactData;
-        next();
-    } catch (error) {
-        console.error(error);
-        next(error);
-    }
-});
-
-
-
-
 // 
 app.use(express.urlencoded({ extended: true }));
+
 // handelbars setup
 app.engine('hbs', engine({
     extname: '.hbs',
@@ -68,6 +54,11 @@ app.engine('hbs', engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
+
+// Inject global view  Data
+app.use(loadContact);
+
+// public pages
 // root for homepage
 app.get('/', (req, res) => {
     res.render('home', { title: 'C&D Cleaning services' });
@@ -81,28 +72,32 @@ app.get('/quote', (req, res) => {
 app.get('/services', (req, res) => {
     res.render('services', { title: 'C&D Cleaning services' , extraCSS: '/css/services.css'});
 });
+// Quote success page
+
+app.get('/quote-success', (req, res) => {
+    res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
+});
+
+/*----------------------------
+   API Routes
+------------------------------*/
 // Use quote request routes
-
 app.use('/api/quotes', quoteRequests);
-
-
 // Use contact routes
 app.use('/api/contacts', contactRoutes);
-
 // Use message routes
-
-app.use('/', messageRoutes);
-
 app.use('/api/messages', messageRoutes);
-
 // Use service routes 
 app.use('/api/service', serviceRoutes);
 
+/*----------------------------
+Admin Routes
+--------------------------------*/
 
 // Use admin routes
 app.use('/admin-hna46553123', AdminRoutes);
 
-// 
+//  debug delete late
 
 
 app.get('/debug-contact', async (req, res) => {
@@ -110,12 +105,9 @@ app.get('/debug-contact', async (req, res) => {
     res.json(data);
 });
 
+/*
 
-// Quote success page
-
-app.get('/quote-success', (req, res) => {
-    res.render('quote-success', { title: 'Cendy&D - Quote Submitted', extraCSS: '/css/quote-success.css' });
-});
+app.use('/', messageRoutes); */
 
 // 
 /*
