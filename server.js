@@ -12,7 +12,7 @@ const {loadContact} = require('./controllers/contactController');
 
 // Import route handlers
 
-const serviceRoutes = require('./routes/serviceRoutes');
+
 const quoteRequests = require('./routes/quoteRoutes');
 const AdminRoutes = require('./routes/adminRoutes');
 
@@ -88,7 +88,6 @@ app.use('/api/contacts', contactRoutes);
 // Use message routes
 app.use('/api/messages', messageRoutes);
 // Use service routes 
-app.use('/api/service', serviceRoutes);
 
 /*----------------------------
 Admin Routes

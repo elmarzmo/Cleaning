@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(data);
 
             if(response.ok) {
-               // localStorage.setItem('adminToken', data.token);
+              
                 window.location.href = `/admin-hna46553123/dashboard`;
             } else {
                 document.getElementById('error-message').innerText = 'Login failed';
@@ -48,11 +48,9 @@ if(quoteTable) {
 }   
 
  async function loadMessages() {
-    const token = localStorage.getItem('adminToken');
+    
     const response = await fetch('/api/messages', {
-        headers: {
-            'Authorization': `Bearer ${token}` 
-        }
+        credentials: 'include'
     });
 
     if (!response.ok) {
@@ -84,12 +82,10 @@ if(quoteTable) {
     document.querySelectorAll('.delete-message').forEach(button => {
         button.addEventListener('click', async (e) => {
             const id = e.target.getAttribute('data-id');
-            const token = localStorage.getItem('adminToken');
+           
             const response = await fetch(`/api/messages/${id}`, {
                 method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+                credentials: 'include'
             });
             if(response.ok) {
                 loadMessages();
@@ -101,13 +97,11 @@ if(quoteTable) {
     document.querySelectorAll('.message-star').forEach(button => {  
         button.addEventListener('click', async (e) => { 
             const id = e.target.getAttribute('data-id');
-            const token = localStorage.getItem('adminToken');   
+             
             const response = await fetch(`/api/messages/${id}/message-star`, {
                 method: 'PATCH',
-                headers: {
-                    'Authorization': `Bearer ${token}`, 
-                    'Content-Type': 'application/json'
-                }   
+                credentials: 'include'
+             
             });
             const result = await response.json();
             e.target.innerText = result.starred ? '⭐' : '☆';
@@ -116,11 +110,9 @@ if(quoteTable) {
 }
 
 async function loadQuotes() {
-    const token = localStorage.getItem('adminToken');
+   
     const response = await fetch('/api/quotes', {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
+        credentials: 'include'
     });
     const quotes = await response.json();
     const table = document.getElementById('quote-requests-body');
@@ -154,12 +146,10 @@ async function loadQuotes() {
     document.querySelectorAll('.delete-quote').forEach(button => {  
         button.addEventListener('click', async (e) => {
             const id = e.target.getAttribute('data-id');
-            const token = localStorage.getItem('adminToken');   
+            
             const response = await fetch(`/api/quotes/${id}`, {
                 method: 'DELETE',
-                headers: {  
-                    'Authorization': `Bearer ${token}`
-                }   
+                credentials: 'include'  
             });
             if(response.ok) {
                 loadQuotes();
@@ -171,13 +161,10 @@ async function loadQuotes() {
     document.querySelectorAll('.star').forEach(button => {  
         button.addEventListener('click', async (e) => {
             const id = e.target.getAttribute('data-id');
-            const token = localStorage.getItem('adminToken');   
+            
             const response = await fetch(`/api/quotes/${id}/star`, {
                 method: 'PATCH',
-                headers: {
-                    'Authorization': `Bearer ${token}`, 
-                    'Content-Type': 'application/json'
-                }   
+                credentials: 'include' 
             });
             const result = await response.json();
             e.target.innerText = result.starred ? '⭐' : '☆';
