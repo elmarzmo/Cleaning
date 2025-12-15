@@ -58,3 +58,15 @@
                 font-weight: 600;
                 text-align: center;
             }
+
+.error-text {
+    color: #d32f2f;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input.invalid,
+textarea.invalid {
+    border: 1px solid #d32f2f;
+}

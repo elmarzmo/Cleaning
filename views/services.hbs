@@ -52,10 +52,17 @@
             <p>🕒 {{contact.workingHours}}</p>
     </div>
     <!-- Contact Form -->
-    <form class="contact-form" action="/api/messages/submit-message" method="post"> 
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+    
+    <form id="contact-form" class="contact-form" action="/api/messages/submit-message" method="post"> 
+    
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+        <small class="error-text" id="nameError"></small>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+        <small class="error-text" id="emailError"></small>
+        <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+        <small class="error-text" id="messageError"></small>
         <button type="submit" class="btn-submit">Send Message</button>
+
     </form>
 </section>
+<script src="/js/checkInput.js"></script>

@@ -49,36 +49,7 @@
         </form>
     </section>
 
-<!-- Instant Estimate Section 
-<section class="estimate-box">
-        <h3>Instant Estimate Calculator</h3>
-        <form id="estimate-form" action="/submit-quote" method="POST">
-            <label for="service-type">Service Type:</label>
-            <select id="service-type" name="service-type" required>
-                <option value="basic"{{#if (eq selectedService "basic")}}selected{{/if}}>Basic Home Cleaning</option>
-                <option value="commercial"{{#if (eq selectedService "commercial")}}selected{{/if}}>Commercial Cleaning</option>
-                <option value="deep" {{#if (eq selectedService "deep")}}selected{{/if}}>Deep Cleaning</option>
-                <option value="move"{{#if (eq selectedService "move")}}selected{{/if}}>Move-In/Move-Out Cleaning</option>
-                <option value="custom-cleaning"{{#if (eq selectedService "custom-cleaning")}}selected{{/if}}>Custom Cleaning</option>
-                <option value="airbnb-cleaning"{{#if (eq selectedService "airbnb-cleaning")}}selected{{/if}}>Airbnb Cleaning</option>
-            </select>
 
-            <label for="area-size">Area Size (in sq ft):</label>
-            <input type="number" id="area-size" name="area-size" min="100" required>
-
-            <label for="frequency">Cleaning Frequency:</label>
-            <select id="frequency" name="frequency" required>
-                <option value="one-time">One-Time</option>
-                <option value="weekly">Weekly</option>
-                <option value="bi-weekly">Bi-Weekly</option>
-                <option value="monthly">Monthly</option>
-            </select>
-
-            <button id="calcBtn" type="submit">Calculate Estimate</button>
-        </form>
-        <div id="estimate-result" class="estimate-result"></div>
-    </section>  
-    -->
 </div>
    
     <script src="/js/quote.js"></script>

@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const messageController = require('../controllers/messageController');
+const { submitMessageValidator } = require('../validators/messageValidator');
+const validate = require('../middleware/validateMiddleware');
 
 
 
 
 // 
-router.post('/submit-message', messageController.submitMessage);
+router.post('/submit-message', submitMessageValidator, validate ,messageController.submitMessage);
 
 // 
 router.get('/', messageController.getMessages);
