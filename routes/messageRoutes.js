@@ -8,7 +8,7 @@ const validate = require('../middleware/validateMiddleware');
 
 
 // 
-router.post('/submit-message', submitMessageValidator, validate ,messageController.submitMessage);
+router.post('/submit-message', submitMessageValidator, validate('/') ,messageController.submitMessage);
 
 // 
 router.get('/', messageController.getMessages);
