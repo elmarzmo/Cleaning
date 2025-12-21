@@ -61,16 +61,16 @@ app.use(loadContact);
 // public pages
 // root for homepage
 app.get('/', (req, res) => {
-    res.render('home', { title: 'C&D Cleaning services' });
+    res.render('home', { title: 'C&D Cleaning Services' });
 });
 // root for quote page
 app.get('/quote', (req, res) => {
     const selectedService = req.query['service-type'] || 'basic';
-    res.render('quote', { title: 'C&D Cleaning services' , extraCSS: '/css/quote.css', selectedService });
+    res.render('quote', { title: 'C&D Cleaning Services' , extraCSS: '/css/quote.css', selectedService });
 });
 // services page
 app.get('/services', (req, res) => {
-    res.render('services', { title: 'C&D Cleaning services' , extraCSS: '/css/services.css'});
+    res.render('services', { title: 'C&D Cleaning Services' , extraCSS: '/css/services.css'});
 });
 // Quote success page
 
