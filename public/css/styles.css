@@ -203,3 +203,54 @@ input.invalid,
 textarea.invalid {
     border: 1px solid #d32f2f;
 }
+
+@media (max-width: 760px) {
+     /* Header adjustments*/
+     header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+     }
+     nav a {
+        margin-left: 10px;
+        font-size: 14px;
+        margin-top: 5px;
+     }
+     .hero{
+        padding: 80px 10px;
+
+     }
+     .hero h2 {
+        font-size: 28px;
+     }
+     .hero h3 {
+        font-size: 20px;
+     }
+     .hero p {
+        font-size: 16px;
+     }
+     .services {
+        grid-template-columns: 1fr;
+     }
+     .service-card {
+        width: 100%;
+        box-sizing: border-box;
+     }
+     .contact-wrapper {
+        flex-direction: column;
+        gap: 20px;
+     }
+     .contact-info, .contact-form {
+        flex: 1 1 100%;
+
+     }
+     .section, .contact-section {
+        padding: 30px 10px;
+        margin: 20px auto;
+     }
+     .btn-quote, .btn-services, .contact-form button {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 0;
+     }
+}

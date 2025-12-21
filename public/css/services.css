@@ -70,3 +70,18 @@ input.invalid,
 textarea.invalid {
     border: 1px solid #d32f2f;
 }
+
+@media (max-width: 768px) {
+
+    .services-grid{
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 10px;
+    }
+    .service-card {
+        width: 100%
+    }
+    .services-header{
+        padding: 40px 10px;
+    }
+}
