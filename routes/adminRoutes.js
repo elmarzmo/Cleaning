@@ -25,7 +25,7 @@ router.get('/login', (req, res) => {
 });
 
 // Admin registration
-router.post('/create', authController.createAdmin);
+//router.post('/create', authController.createAdmin);
 // Admin login
 router.post('/login', authController.login);
 
