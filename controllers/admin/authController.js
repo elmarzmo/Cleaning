@@ -1,6 +1,6 @@
 const admin = require('../../models/admin');
 
-
+/*
 exports.createAdmin = async (req, res) => {
     try {
         console.log("🔥 CREATE ROUTE HIT");
@@ -16,12 +16,12 @@ exports.createAdmin = async (req, res) => {
         await newAdmin.save();
         res.status(201).json({ message: 'Admin created successfully' });    
     } catch (error) {
-            console.error("REGISTER ERROR:", error);  // <-- ADD THIS
+            console.error("REGISTER ERROR:", error);  
 
         res.status(500).json({ message: 'Server error' });
     }
 };  
-
+*/
 
 exports.login = async (req, res) => {
     try {
