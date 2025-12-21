@@ -6,7 +6,7 @@ exports.loadContact = async (req, res, next) => {
         res.locals.contact = contact;
         next();
     } catch{
-        console.error(err);
+      //  console.error(err);
         next();
     }
     
