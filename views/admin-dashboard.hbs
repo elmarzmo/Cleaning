@@ -19,11 +19,11 @@
     <tbody id="messages-body">
         {{#each messages}}
         <tr data-id="{{this._id}}">
-            <td>{{this.name}}</td>
-            <td>{{this.email}}</td>
-            <td>{{this.message}}</td>
-            <td>{{this.createdAt}}</td>
-            <td>
+            <td data-label="Name">{{this.name}}</td>
+            <td data-label="Email">{{this.email}}</td>
+            <td data-label="Message">{{this.message}}</td>
+            <td data-label="Received">{{this.createdAt}}</td>
+            <td data-label="Actions">
                 <button class="delete-message" data-id="{{this._id}}">Delete</button>
                 <button class="message-star" data-id="{{this._id}}">
                     {{#if this.starred}}⭐{{else}}☆{{/if}}

@@ -144,3 +144,128 @@ tbody tr:hover {
     width: 120px;
     text-align: center;
 }
+
+@media (max-width: 760px) {
+
+  .admin-dashboard-title {
+    font-size: 22px;
+  }
+
+  #logout-button {
+    position: static;
+    width: 90%;
+    margin: 15px auto;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 700px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 760px){
+
+    .admin-dashboard-title{
+        font-size: 22px;
+        margin-top: 20px;
+    }
+
+    h3.section-title{
+        font-size: 18px ;
+        margin: 20px 0 10px 10px;
+        padding-left: 8px;
+    }
+
+    
+    
+    #logout-button{
+        position: static;
+        display: block;
+        margin: 15px auto;
+        width: 90%;
+        font-size: 15px;
+    }
+    
+    table thead {
+        display: none;
+    }
+    table, tbody, tr, td{
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        max-width: 100%;
+    }
+    table td {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 8px 0;
+        border: none;
+        font-size: 14px;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    table td:last-child{
+        margin-top: 6px;
+    }
+    
+    .table-wrapper{
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table{
+        width: 100%;
+        font-size: 14px;
+        margin: 10px auto;
+    }
+        
+
+    th, td {
+        padding: 8px;
+
+    }
+
+    .delete-quote, .delete-message {
+        padding: 6px 10px;
+        font-size: 13px;
+
+    }
+    .star, .message-star{
+        font-size: 20px;
+        width: 40px;
+    }
+
+    .message-table td, .message-table th {
+        font-size: 13px;
+    }
+
+    .message-table td:last-child,
+    .message-table th :last-child,
+    .quote-requests-table td:last-child,
+    .quote-requests-table th:last-child {
+        width: auto;
+    }
+
+    #update-information {
+        width: 90%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+}
